@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.opensikhapps.gurbaniaudioplayer",
+      "sha256_cert_fingerprints": [
+        "1F:34:81:2A:0B:88:98:D0:35:16:43:08:1B:38:2D:54:E9:F5:9C:A8:97:22:24:C5:14:14:C5:F5:6D:45:EC:15",
+        "C8:EB:AC:9B:5F:59:B5:5C:42:65:A0:31:B0:3E:07:75:29:E6:98:DC:3F:AD:E3:8A:E7:DF:EE:70:19:D2:5C:14",
+        "3D:DF:2E:A7:35:01:50:83:9D:C2:22:2B:B8:FB:CB:92:FC:C0:DA:17:06:06:14:90:72:76:21:F8:07:8B:D1:A1"
+      ]
+    }
+  }
+]
