@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Gurbani Audio Player</title>
+    <style>
+        /* Hidden by default, only shown to desktop users */
+        #desktop-view { 
+            display: none; 
+            text-align: center; 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            margin-top: 8vh; 
+            color: #333;
+        }
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .qr-box { 
+            width: 220px; 
+            height: 220px; 
+            margin: 30px auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 10px;
+            background: white;
+        }
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+        }
+        .store-links a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .store-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Your configured App Store and Play Store production links
+            var appStoreUrl = "https://apps.apple.com/app/gurbani-audio-player/id6809691052";
+            var playStoreUrl = "https://play.google.com/store/apps/details?id=com.opensikhapps.gurbaniaudioplayer";
+
+            // Mobile platform detection
+            var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            var isAndroid = /android/i.test(userAgent);
+
+            if (isIOS) {
+                window.location.href = appStoreUrl;
+            } else if (isAndroid) {
+                window.location.href = playStoreUrl;
+            } else {
+                // Desktop user: Stop redirect loop and display the scan page
+                document.getElementById("loading-view").style.display = "none";
+                document.getElementById("desktop-view").style.display = "block";
+
+                // Pulls the current active URL matching your App/Universal link domain configuration
+                var currentUrl = window.location.href;
+
+                // Generates a dynamic QR code pointing back to this active file link
+                var qrApiUrl = "https://qrserver.com" + encodeURIComponent(currentUrl);
+                
+                document.getElementById("qr-image").src = qrApiUrl;
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <!-- Mobile users fallback layout (Visible momentarily during redirect) -->
+    <div id="loading-view" style="text-align: center; margin-top: 100px; font-family: sans-serif; color: #666;">
+        <h2>Connecting you to the app store...</h2>
+    </div>
+
+    <!-- Persistent Desktop View Layout -->
+    <div id="desktop-view">
+        <div class="container">
+            <h1>Get Gurbani Audio Player</h1>
+            <p>Scan this QR code with your phone's camera to open or download the app instantly.</p>
+            
+            <div class="qr-box">
+                <img id="qr-image" src="" alt="Loading QR Code...">
+            </div>
+            
+            <p class="store-links" style="margin-top: 40px; font-size: 0.9em; color: #666;">
+                Or browse the listings directly:<br><br>
+                <a href="https://apps.apple.com/app/gurbani-audio-player/id6809691052" target="_blank">App Store (iOS)</a> &nbsp;|&nbsp; 
+                <a href="https://play.google.com/store/apps/details?id=com.opensikhapps.gurbaniaudioplayer" target="_blank">Play Store (Android)</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
